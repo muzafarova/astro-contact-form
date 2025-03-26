@@ -1,0 +1,9 @@
+.box {
+    padding: 40px;
+    background: #f1ecf6;
+    border-radius: 10px;
+}
+
+.mute {
+    color: var(--color--mute)
+}

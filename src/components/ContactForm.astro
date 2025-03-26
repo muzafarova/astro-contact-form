@@ -1,0 +1,133 @@
+<form method="post" class="contact-form box">
+  <div class="contact-form__row">
+    <div class="form-field">
+      <label for="first-name" class="sr-only"> First Name </label>
+      <input
+        type="text"
+        name="first-name"
+        placeholder="First Name *"
+        required
+        class="input"
+        autocomplete="first-name"
+      />
+    </div>
+
+    <div class="form-field form-field--valid">
+      <label for="first-name" class="sr-only"> Last Name </label>
+      <input
+        type="text"
+        name="last-name"
+        placeholder="Last Name *"
+        required
+        class="input"
+        autocomplete="family-name"
+      />
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="first-name" class="sr-only"> Work Email </label>
+    <input
+      type="text"
+      name="work-email"
+      placeholder="Work Email *"
+      required
+      class="input"
+      autocomplete="email"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="message"> Message *</label>
+    <textarea
+      name="message"
+      placeholder="Enter your message"
+      rows="7"
+      required
+      class="input"></textarea>
+  </div>
+
+  <p class="mute">
+    For information about our privacy practices and commitment to protecting
+    your privacy, please review our <a href="#">Privacy Policy.</a>
+  </p>
+
+  <button type="submit">Send Message</button>
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+  }
+
+  .contact-form button {
+    align-self: flex-start;
+  }
+
+  .contact-form__row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 1px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input {
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    background: var(--color--bg);
+    color: var(--color--text);
+  }
+
+  .input:focus {
+    outline: none;
+  }
+
+  .form-field:focus-within .input {
+    border-color: var(--border-color);
+  }
+
+  .form-field--valid:focus-within .input {
+    border-color: var(--color--success);
+  }
+
+  .contact-form__row .form-field .input {
+    border-radius: 0;
+  }
+
+  .contact-form__row .form-field:first-child .input {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+  }
+
+  .contact-form__row .form-field:last-child .input {
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  @media screen and (max-width: 768px) {
+    .contact-form {
+      width: 100%;
+      border-radius: 0;
+      height: 100dvh;
+      box-sizing: border-box;
+    }
+
+    .contact-form__row {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-form__row .form-field .input {
+      border-radius: var(--border-radius);
+      border-width: 1px;
+    }
+  }
+</style>
