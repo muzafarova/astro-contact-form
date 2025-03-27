@@ -1,10 +1,8 @@
 import type { APIRoute } from 'astro';
-import { z } from 'zod';
-import nodemailer from 'nodemailer';
+import { safeParse } from '../services/validator';
+import { sendConfirmationByEmail } from '../services/mailer';
 
 export const prerender = false;
-
-const { SENDER_NAME, SENDER_USERNAME, SENDER_PASSWORD } = import.meta.env;
 
 export const GET: APIRoute = async () => {
   return new Response(null, {
@@ -20,15 +18,12 @@ export const POST: APIRoute = async ({ request }) => {
   const data = Object.fromEntries(formData.entries());
 
   // Validate the data
-  const Schema = z.object({
-    firstName: z.string(),
-    lastName: z.string(),
-    email: z.string().email(),
-    message: z.string(),
-  });
-  const result = Schema.safeParse(data);
+  const result = safeParse(data);
 
   if (!result.success) {
+    // TODO log the error
+    // TODO inform the user about the problem
+    // Temporarely respond with error JSON
     return new Response(
       JSON.stringify({
         message: 'Missing required fields',
@@ -38,32 +33,10 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  if (SENDER_NAME && SENDER_USERNAME && SENDER_PASSWORD) {
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
-      secure: false, // true for port 465, false for other ports
-      auth: {
-        user: SENDER_USERNAME,
-        pass: SENDER_PASSWORD,
-      },
-    });
+  // Send confirmation email
+  sendConfirmationByEmail(result.data);
 
-    const { firstName, lastName, email, message } = result.data;
-
-    // Send confirmation email
-    const info = await transporter.sendMail({
-      from: `"${SENDER_NAME} 👻" <${SENDER_USERNAME}>`,
-      to: email,
-      subject: `We received your contact details, ${firstName} ✔`,
-      text: `Name: ${firstName} ${lastName}\r\n\r\nEmail: ${email}\r\n\r\nMessage: ${message}`,
-      html: `<p>Name:<br> ${firstName} ${lastName}</p><p>Email:<br> ${email}</p><p>Message:<br> ${message}</p>`,
-    });
-
-    console.log('Message sent: %s', info.messageId);
-  }
-
-  // Redirect to the final page
+  // Redirect to the confirmation page
   return new Response(null, {
     status: 302,
     headers: {
