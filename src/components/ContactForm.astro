@@ -1,10 +1,11 @@
-<form method="post" class="contact-form box">
+<form method="post" action="/contact" class="contact-form box">
   <div class="contact-form__row">
     <div class="form-field">
       <label for="first-name" class="sr-only"> First Name </label>
       <input
         type="text"
-        name="first-name"
+        id="first-name"
+        name="firstName"
         placeholder="First Name *"
         required
         class="input"
@@ -16,7 +17,8 @@
       <label for="first-name" class="sr-only"> Last Name </label>
       <input
         type="text"
-        name="last-name"
+        id="last-name"
+        name="lastName"
         placeholder="Last Name *"
         required
         class="input"
@@ -29,7 +31,8 @@
     <label for="first-name" class="sr-only"> Work Email </label>
     <input
       type="text"
-      name="work-email"
+      id="work-email"
+      name="email"
       placeholder="Work Email *"
       required
       class="input"
@@ -40,6 +43,7 @@
   <div class="form-field">
     <label for="message"> Message *</label>
     <textarea
+      id="message"
       name="message"
       placeholder="Enter your message"
       rows="7"
