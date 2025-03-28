@@ -8,3 +8,9 @@
 .mute {
     color: var(--color--mute)
 }
+
+.truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
