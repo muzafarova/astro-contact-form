@@ -37,9 +37,8 @@ async function onSubmit(e: Event) {
   fields.value = Object.fromEntries(formData.entries()) as FormFields;
 
   const valid = validateForm();
-
   if (!valid) {
-    target?.focus();
+    // TODO focus on the first invalid field
     return;
   }
 
@@ -120,15 +119,20 @@ function onChange(e: Event) {
       your privacy, please review our <a href="#">Privacy Policy.</a>
     </p>
 
-    <button type="submit">Send Message</button>
+    <button
+      type="submit"
+      v-text="state === 'processing' ? 'Processing...' : 'Send Message'"
+    />
   </form>
 </template>
 
 <style>
 .contact-form {
+  --spacer: 0.75rem;
+
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--spacer);
 }
 
 .contact-form button {
@@ -155,10 +159,10 @@ function onChange(e: Event) {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 0 1em;
+  padding: 0 1rem;
   color: var(--color--error);
   font-size: 90%;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .field {
@@ -210,17 +214,35 @@ function onChange(e: Event) {
   background: transparent;
 }
 
+.field-box--traditional .field {
+  margin-top: 1.75rem;
+}
+
 .field-box--filled .field__label,
 .field:focus-within .field__label,
 .field:has(:-webkit-autofill, :autofill) .field__label {
   display: block;
-  transform: translate(0, -0.5em) scale(0.9);
+  transform: translate(0, -0.5rem) scale(0.9);
+}
+
+.field-box--traditional .field .field__label {
+  top: -1.75rem;
+  padding: 0;
+  transform: none;
+}
+
+.field-box--traditional .field__label {
+  color: currentColor;
 }
 
 .field-box--filled .field__input,
 .field:focus-within .field__input,
 .field:has(:-webkit-autofill, :autofill) .field__input {
   padding: 1.6rem 1rem 0.4rem;
+}
+
+.field-box--traditional .field .field__input {
+  padding: 1rem;
 }
 
 /* Field Group */
@@ -241,6 +263,12 @@ function onChange(e: Event) {
 .field-group astro-island:first-of-type .field-box .field {
   border-top-left-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
+  margin-right: 0;
+}
+
+.field-group .field-box:first-child .field:focus-within,
+.field-group astro-island:first-of-type .field-box .field:focus-within {
+  margin-right: 1px;
 }
 
 .field-group .field-box:last-child .field,
@@ -253,11 +281,12 @@ function onChange(e: Event) {
   .field-group {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--spacer);
   }
 
-  .field-group .field-box .field {
+  .field-group .field-box .field:nth-child(n) {
     border-radius: var(--border-radius);
+    margin: 1px;
   }
 }
 </style>

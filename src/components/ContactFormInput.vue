@@ -22,6 +22,7 @@ withDefaults(defineProps<Props>(), { type: 'text' });
     :id="id"
     :label="label"
     :required="required"
+    :traditional="type === 'textarea'"
     :error="error"
     :class="{
       'field-box--filled': value,

@@ -4,6 +4,7 @@ interface Props {
   label: string;
   required?: boolean;
   error?: string;
+  traditional?: boolean;
 }
 
 defineProps<Props>();
@@ -14,6 +15,7 @@ defineProps<Props>();
     class="field-box"
     :class="{
       'field-box--invalid': error,
+      'field-box--traditional': traditional,
     }"
   >
     <div class="field">
