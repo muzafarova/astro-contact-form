@@ -28,16 +28,23 @@ withDefaults(defineProps<Props>(), { type: 'text' });
       'field-box--valid': value && !error,
     }"
   >
-    <component
-      :is="type === 'textarea' ? 'textarea' : 'input'"
+    <textarea
+      v-if="type === 'textarea'"
+      :id="id"
+      :name="name"
+      rows="7"
+      :autocomplete="autocomplete"
+      class="field__input"
+      @input="(e: Event) => value = (e.target as HTMLTextAreaElement)?.value"
+    />
+    <input
+      v-else
       :id="id"
       :name="name"
       :type="type"
-      :rows="type === 'textarea' && 7"
-      :required="required"
       :autocomplete="autocomplete"
       class="field__input"
-      @input="(e: Event) => value = (e.target as HTMLInputElement | HTMLTextAreaElement)?.value"
+      @input="(e: Event) => value = (e.target as HTMLInputElement)?.value"
     />
   </ContactFormField>
 </template>

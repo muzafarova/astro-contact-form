@@ -1,17 +1,13 @@
 import nodemailer from 'nodemailer';
 const { SENDER_NAME, SENDER_USERNAME, SENDER_PASSWORD } = import.meta.env;
+import type { FormFields } from './validator';
 
 export async function sendConfirmationByEmail({
   firstName,
   lastName,
   email,
   message,
-}: {
-  firstName: string;
-  lastName: string;
-  email: string;
-  message: string;
-}) {
+}: FormFields) {
   if (!(SENDER_NAME || SENDER_USERNAME || SENDER_PASSWORD)) {
     return;
   }

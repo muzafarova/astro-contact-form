@@ -7,6 +7,8 @@ const Schema = z.object({
   message: z.string().trim().min(1, { message: "Message can't be empty" }),
 });
 
+export type FormFields = z.infer<typeof Schema>;
+
 export function safeParse(data: unknown) {
   return Schema.safeParse(data);
 }

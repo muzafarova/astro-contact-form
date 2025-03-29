@@ -19,11 +19,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // Validate the data
   const result = safeParse(data);
-
   if (!result.success) {
-    // TODO log the error
-    // TODO inform the user about the problem
-    // Temporarely respond with error JSON
     return new Response(
       JSON.stringify({
         message: 'Missing required fields',
@@ -33,14 +29,10 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  // Send confirmation email
+  // Send confirmation email (fire and forget)
   sendConfirmationByEmail(result.data);
 
-  // Redirect to the confirmation page
   return new Response(null, {
-    status: 302,
-    headers: {
-      Location: '/thank-you',
-    },
+    status: 204,
   });
 };

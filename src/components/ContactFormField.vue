@@ -12,12 +12,16 @@ defineProps<Props>();
 <template>
   <div
     class="field-box"
-    :classlist="{
+    :class="{
       'field-box--invalid': error,
     }"
   >
     <div class="field">
-      <label :for="id" :title="error ? error : label" class="field__label">
+      <label
+        :for="id"
+        :title="error ? error : label"
+        class="field__label truncate"
+      >
         {{ label }} {{ required ? ' *' : '' }}
       </label>
       <slot />
