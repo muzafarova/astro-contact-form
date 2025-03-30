@@ -1,6 +1,6 @@
 # Contact Form
 
-This form collects contact information and sends it to the given email (credentials are in `.env.example`). This demo uses [`nodemailer`](https://www.nodemailer.com/) to facilitate email sending and [Ethernal Email](https://ethereal.email/) as a email transporter. No message gets actually delivered, all messages are caught by the Ethernal Email and can be vieved via their dashboard.
+This form collects contact information and sends it to the given email (credentials are in `.env.example`). This demo uses [`nodemailer`](https://www.nodemailer.com/) to facilitate email sending and [Ethernal Email](https://ethereal.email/) as a email transporter. No message gets actually delivered, all messages are caught by the Ethernal Email and can be seen via their dashboard.
 
 Project gets deployed to [Vercel](https://vercel.com/).
 
