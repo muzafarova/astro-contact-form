@@ -1,5 +1,23 @@
 # Contact Form
 
+This form collects contact information and sends it to the given email (credentials are in `.env.example`). This demo uses [`nodemailer`](https://www.nodemailer.com/) to facilitate email sending and [Ethernal Email](https://ethereal.email/) as a email transporter. No message gets actually delivered, all messages are caught by the Ethernal Email and can be vieved via their dashboard.
+
+Project gets deployed to [Vercel](https://vercel.com/).
+
+Client-side interactions are managed with [Vue 3](https://vuejs.org/) components (TS, composition API). We use [`zod`](https://zod.dev/) library to validate user input on both server and client side. The form support autocompletion.
+
+## 🚀 Dev setup
+
+This is an [Astro](https://astro.build/) project. See the list of [commands](#commands) below for all scripts available.
+
+To run the project:
+
+1. Create `.env` file if you wish to enable Ethernal Email (optional step)
+2. Install dependencies `npm i`
+3. Run dev server `npm run dev`
+
+See [Astro documentation](https://docs.astro.build) for more details.
+
 ## 🚀 Project Structure
 
 ```text
@@ -8,15 +26,17 @@
 │   └── favicon.svg
 ├── src/
 │   ├── css/
-│       └── index.css
-│       └── ...
+│       └── variables.css (configurable tokens)
+│       └── base.css (basic HTML level styles)
+│       └── patterns.css (utility classes tokens)
 │   ├── components/
-│   │   └── ContactForm.astro
+│   │   └── ContactForm.vue
+│   │   └── ContactFormFiled.vue
+│   │   └── ContactFormInput.vue
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
 │       └── index.astro
-│       └── thank-you.astro
 │       └── contact.ts
 └── package.json
 ```
@@ -35,7 +55,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
