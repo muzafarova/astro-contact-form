@@ -8,7 +8,7 @@ Client-side interactions are implemented with [Vue 3](https://vuejs.org/) compon
 
 ## 🚀 Dev setup
 
-This is an [Astro](https://astro.build/) project. See the list of [commands](#commands) below for all scripts available.
+This is an [Astro](https://astro.build/) project. See the list of [commands](#-commands) below for all scripts available.
 
 To run the project:
 
