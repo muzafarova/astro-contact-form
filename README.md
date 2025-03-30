@@ -4,7 +4,7 @@ This form collects contact information and sends it to the given email (credenti
 
 Project gets deployed to [Vercel](https://vercel.com/).
 
-Client-side interactions are managed with [Vue 3](https://vuejs.org/) components (TS, composition API). We use [`zod`](https://zod.dev/) library to validate user input on both server and client side. The form support autocompletion.
+Client-side interactions are managed with [Vue 3](https://vuejs.org/) components (TS, composition API). [`Zod`](https://zod.dev/) library is used to validate user input on both server and client side. The form supports autocompletion in the desktop browsers, mobile behavior can be inconsistend with what you get on the desktop.
 
 ## 🚀 Dev setup
 
