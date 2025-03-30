@@ -61,7 +61,7 @@ function onChange(e: Event) {
 </script>
 
 <template>
-  <div v-if="success" class="box">
+  <div v-if="success" class="contact-form contact-form--thanks">
     <h1>Thanks!</h1>
     <p>Go back <a href="/">home.</a></p>
   </div>
@@ -72,7 +72,7 @@ function onChange(e: Event) {
     @change="onChange"
     method="post"
     action="/contact"
-    class="contact-form box"
+    class="contact-form"
   >
     <div class="field-group">
       <ContactFormInput
@@ -119,10 +119,7 @@ function onChange(e: Event) {
       your privacy, please review our <a href="#">Privacy Policy.</a>
     </p>
 
-    <button
-      type="submit"
-      v-text="state === 'processing' ? 'Processing...' : 'Send Message'"
-    />
+    <button type="submit">Send Message</button>
   </form>
 </template>
 
@@ -133,6 +130,17 @@ function onChange(e: Event) {
   display: flex;
   flex-direction: column;
   gap: var(--spacer);
+  padding: 40px;
+  background: #f1ecf6;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 100dvw;
+  max-height: 100vh;
+}
+
+.contact-form--thanks {
+  text-align: center;
+  justify-content: center;
 }
 
 .contact-form button {
@@ -145,6 +153,8 @@ function onChange(e: Event) {
     border-radius: 0;
     height: 100dvh;
     box-sizing: border-box;
+    padding: 1rem;
+    font-size: 16px;
   }
 }
 </style>
@@ -162,7 +172,7 @@ function onChange(e: Event) {
   padding: 0 1rem;
   color: var(--color--error);
   font-size: 90%;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .field {
@@ -215,7 +225,7 @@ function onChange(e: Event) {
 }
 
 .field-box--traditional .field {
-  margin-top: 1.75rem;
+  margin-top: 2.25rem;
 }
 
 .field-box--filled .field__label,
