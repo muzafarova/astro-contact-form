@@ -15,7 +15,6 @@ defineProps<Props>();
     class="field-box"
     :class="{
       'field-box--invalid': error,
-      'field-box--traditional': traditional,
     }"
   >
     <div class="field">

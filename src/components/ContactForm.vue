@@ -125,7 +125,7 @@ function onChange(e: Event) {
 
 <style>
 .contact-form {
-  --spacer: 0.75rem;
+  --spacer: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -162,14 +162,14 @@ function onChange(e: Event) {
 <style>
 .field-box {
   position: relative;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1.25rem;
 }
 
 .field-box__error {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 0 1rem;
+  padding: 0 calc(var(--border-radius) / 2);
   color: var(--color--error);
   font-size: 90%;
   line-height: 1;
@@ -201,10 +201,6 @@ function onChange(e: Event) {
   box-shadow: 0 0 0 1px var(--color--success);
 }
 
-.field-box--invalid:focus-within .field {
-  box-shadow: 0 0 0 1px var(--color--error);
-}
-
 /* Floating Label */
 
 .field__label {
@@ -224,10 +220,6 @@ function onChange(e: Event) {
   background: transparent;
 }
 
-.field-box--traditional .field {
-  margin-top: 2.25rem;
-}
-
 .field-box--filled .field__label,
 .field:focus-within .field__label,
 .field:has(:-webkit-autofill, :autofill) .field__label {
@@ -235,24 +227,10 @@ function onChange(e: Event) {
   transform: translate(0, -0.5rem) scale(0.9);
 }
 
-.field-box--traditional .field .field__label {
-  top: -1.75rem;
-  padding: 0;
-  transform: none;
-}
-
-.field-box--traditional .field__label {
-  color: currentColor;
-}
-
 .field-box--filled .field__input,
 .field:focus-within .field__input,
 .field:has(:-webkit-autofill, :autofill) .field__input {
   padding: 1.6rem 1rem 0.4rem;
-}
-
-.field-box--traditional .field .field__input {
-  padding: 1rem;
 }
 
 /* Field Group */
