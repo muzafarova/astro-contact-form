@@ -6,11 +6,6 @@ import vue from '@astrojs/vue';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
-
+  adapter: vercel({}),
   integrations: [vue()],
 });
