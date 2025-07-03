@@ -62,8 +62,8 @@ function onChange(e: Event) {
 
 <template>
   <div v-if="success" class="contact-form contact-form--thanks">
-    <h1>Thanks!</h1>
-    <p>Go back <a href="/">home.</a></p>
+    <h1>Success 🎉</h1>
+    <p><a href="/">&larr; Go home </a></p>
   </div>
 
   <form
@@ -141,6 +141,7 @@ function onChange(e: Event) {
 .contact-form--thanks {
   text-align: center;
   justify-content: center;
+  background: transparent;
 }
 
 .contact-form button {
